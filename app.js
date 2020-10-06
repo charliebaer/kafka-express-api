@@ -12,15 +12,21 @@ var PORT = process.env.port || 3000;
 app.set("views", path.join(__dirname));
 app.set("view engine", "ejs");
 
-app.get("/:id", function (req, res) {
+
+
+app.post("/:id", function (req, res) {
   var message = req.params["id"];
-  
-  
+
+
   res.send(message);
-  //mykaf(message);
+  mykaf(message);         //  Kafka Revoke function
 
   console.log(message);
 });
+
+app.get('/test1', (req, res) => {
+  res.send('Test response')
+})
 
 app.listen(PORT, function (error) {
   if (error) throw error;
